@@ -100,7 +100,7 @@ export default function Game() {
   )
 }
 
-export function Dice() {
+function Dice() {
 
   const [diceOne, setDiceOne] = useState(0)
   const [diceTwo, setDiceTwo] = useState(0)
@@ -134,7 +134,7 @@ export function Dice() {
 }
 
 
-export function CardComponent({ category }: { category: string }) {
+function CardComponent({ category }: { category: string }) {
   const [cards, setCards] = useState<Card[]>([])
   const [selectedCard, setSelectedCard] = useState<Card | null>(null)
   const [showDescription, setShowDescription] = useState<boolean>(false)
