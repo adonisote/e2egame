@@ -173,14 +173,3 @@ function CardComponent({ category }: { category: string }) {
   )
 
 }
-
-function FullScreen() {
-  const [isFullScreen, setIsFullScreen] = useState()
-  useEffect(() => {
-    function onFullscreenChange() {
-      setIsFullScreen(Boolean(document.fullscreenElement))
-    }
-    document.addEventListener('fullscreenchange', onFullscreenChange)
-  })
-
-}
