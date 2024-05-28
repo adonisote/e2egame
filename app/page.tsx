@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react'
 import e2eLogo from '@/public/E2E_Logo.png'
+import FullScreenComponent from '@/app/ui/fullscreen';
 
 interface Card {
   id: number;
@@ -16,21 +17,25 @@ export default function Game() {
   return (
     <div className='flex fle-col h-screen'>
       <div className='portrait:hidden my-8 mx-8 flex flex-col items-center w-full max-w-4xl'>
+        <div className='flex items-center w-full mb-4 justify-between'>
+          <div className='flex items-center '>
+            <Image
+              src={e2eLogo}
+              alt="E2E Logo"
 
-        <div className='flex items-center w-full mb-4'>
-          <Image
-            src={e2eLogo}
-            alt="E2E Logo"
-
-            style={
-              {
-                height: 'auto',
-                width: 150,
+              style={
+                {
+                  height: 'auto',
+                  width: 150,
+                }
               }
-            }
-            priority
-          />
-          <h1 className=' mx-4 text-xl font-bold text-white'>E2E Solution Architecture Game</h1>
+              priority
+            />
+            <h1 className=' mx-4 text-xl font-bold text-white'>E2E Solution Architecture Game</h1>
+            <div className='flex'>
+              <FullScreenComponent />
+            </div>
+          </div>
 
         </div>
 
@@ -54,46 +59,11 @@ export default function Game() {
               <CardComponent category='Software Engineering' />
             </div>
           </div>
-
-
-
-
-
-
-
         </div>
-        {/* <div className='flex flex-col items-center justify-center h-full m-4'>
-
-
-
-          <div className='flex flex-row'>
-            <div className='basis-1/3 border border-black'>
-              <CardComponent category='Architecture' />
-            </div>
-            <div className='basis-1/3 border border-black'>
-              <CardComponent category='Project Management' />
-            </div>
-            <div className='basis-1/3 border border-black'>
-              <CardComponent category='Software Engineering' />
-            </div>
-
-
-          </div>
-
-
-          <Dice />
-        </div> */}
       </div>
 
       <div className='landscape:hidden '>
         <p>Please rotate your phone!</p>
-        {/* <Image
-          src={'/Background_withFade.png'}
-          alt='Background'
-          fill={true}
-          priority
-          className='object-cover z-0'
-        /> */}
       </div>
     </div>
 
