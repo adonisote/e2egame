@@ -2,6 +2,8 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react'
 import e2eLogo from '@/public/E2E_Logo.png'
+import React from 'react';
+import FullscreenComponent from '@/app/ui/fullScreen';
 
 interface Card {
   id: number;
@@ -9,6 +11,9 @@ interface Card {
   description: string;
   move: number;
 }
+
+
+
 
 
 export default function Game() {
@@ -31,6 +36,7 @@ export default function Game() {
             priority
           />
           <h1 className=' mx-4 text-xl font-bold text-white'>E2E Solution Architecture Game</h1>
+          <FullscreenComponent />
 
         </div>
 
@@ -54,35 +60,9 @@ export default function Game() {
               <CardComponent category='Software Engineering' />
             </div>
           </div>
-
-
-
-
-
-
-
         </div>
-        {/* <div className='flex flex-col items-center justify-center h-full m-4'>
 
 
-
-          <div className='flex flex-row'>
-            <div className='basis-1/3 border border-black'>
-              <CardComponent category='Architecture' />
-            </div>
-            <div className='basis-1/3 border border-black'>
-              <CardComponent category='Project Management' />
-            </div>
-            <div className='basis-1/3 border border-black'>
-              <CardComponent category='Software Engineering' />
-            </div>
-
-
-          </div>
-
-
-          <Dice />
-        </div> */}
       </div>
 
       <div className='landscape:hidden '>
@@ -194,3 +174,13 @@ function CardComponent({ category }: { category: string }) {
 
 }
 
+function FullScreen() {
+  const [isFullScreen, setIsFullScreen] = useState()
+  useEffect(() => {
+    function onFullscreenChange() {
+      setIsFullScreen(Boolean(document.fullscreenElement))
+    }
+    document.addEventListener('fullscreenchange', onFullscreenChange)
+  })
+
+}
