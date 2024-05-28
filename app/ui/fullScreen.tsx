@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const FullscreenComponent: React.FC = () => {
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
 
   useEffect(() => {
     const onFullscreenChange = () => {
