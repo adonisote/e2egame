@@ -109,7 +109,6 @@ function Dice() {
           <Image
             src={diceImages[diceOne]}
             alt={`Dice with ${diceOne} pips`}
-            placeholder='blur'
             quality={100}
             fill={true}
             style={{ objectFit: "contain" }}
@@ -119,7 +118,6 @@ function Dice() {
           (<Image
             src={diceImages[1]}
             alt={`Dice with ${diceOne} pips`}
-            placeholder='blur'
             quality={100}
             fill={true}
             style={{ objectFit: "contain" }}
@@ -132,7 +130,6 @@ function Dice() {
           <Image
             src={diceImages[diceTwo]}
             alt={`Dice with ${diceTwo} pips`}
-            placeholder='blur'
             quality={100}
             fill={true}
             style={{ objectFit: "contain" }}
@@ -142,7 +139,6 @@ function Dice() {
         ) : (<Image
           src={diceImages[1]}
           alt={`Dice with ${diceOne} pips`}
-          placeholder='blur'
           quality={100}
           fill={true}
           style={{ objectFit: "contain" }}

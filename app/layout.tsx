@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Image from "next/image";
+import backgoundImg from '@/public/Background_withFade.png'
+
 
 export const metadata: Metadata = {
   title: "E2E Game",
@@ -15,10 +18,20 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className={`${comfortaa.className} antialiased bg-mobile bg-cover landscape:bg-white h-screen overflow-hidden`}>
-        <main className="h-full w-full">
-          {children}
-        </main>
+      <body className={`${comfortaa.className} antialiased h-screen overflow-hidden`}>
+        <div className="relative w-full h-full">
+          <Image
+            src={backgoundImg}
+            alt="Background with Fade"
+            fill
+            style={{ objectFit: "cover" }}
+            quality={100}
+            priority
+          />
+          <main className=" absolute h-full w-full z-10 inset-0">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
