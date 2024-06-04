@@ -49,14 +49,14 @@ export default function Game() {
             <Dice />
           </div>
           <div className='flex w-5/6 justify-evenly'>
-            <div className='border-4 border-e2e-blue rounded-lg flex-grow w-1/3'>
-              <CardComponent category='Architecture' />
-            </div>
-            <div className='border-4 border-e2e-green mx-2 w-1/3 rounded-lg'>
+            <div className='border-8 border-e2e-blue rounded-lg flex-grow w-1/3 bg-white'>
               <CardComponent category='Project Management' />
             </div>
-            <div className='border-4 border-e2e-lila w-1/3 rounded-lg'>
+            <div className='border-8 border-e2e-green mx-2 w-1/3 rounded-lg bg-white'>
               <CardComponent category='Software Engineering' />
+            </div>
+            <div className='border-8 border-e2e-lila w-1/3 rounded-lg bg-white'>
+              <CardComponent category='Architecture' />
             </div>
           </div>
         </div>
@@ -157,6 +157,24 @@ function CardComponent({ category }: { category: string }) {
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
   const [showDescription, setShowDescription] = useState<boolean>(false);
 
+  const triangleSVG = (
+    <svg width="100" height="100" viewBox="0 0 24 24">
+      <path d="M12 2l9 18h-18z" fill="none" stroke="#1F3864" strokeWidth="1.5" />
+    </svg>
+  );
+
+  const squareSVG = (
+    <svg width="100" height="100" viewBox="0 0 24 24">
+      <rect width="18" height="18" x="3" y="3" fill="none" stroke="#385723" strokeWidth="1.5" />
+    </svg>
+  );
+
+  const circleSVG = (
+    <svg width="100" height="100" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="#7030A0" strokeWidth="1.5" />
+    </svg>
+  );
+
   useEffect(() => {
     fetch('/data.json')
       .then(res => res.json())
@@ -164,6 +182,7 @@ function CardComponent({ category }: { category: string }) {
   }, [category]);
 
   if (cards.length === 0) {
+    //render icon and category instead of loading. category is passed as prop
     return <div>Loading...</div>;
   }
 
@@ -180,11 +199,27 @@ function CardComponent({ category }: { category: string }) {
     setShowDescription(prevShow => !prevShow);
   };
 
+  const renderIcon = () => {
+    switch (category) {
+      case 'Architecture':
+        return circleSVG
+      case 'Project Management':
+        return triangleSVG
+      case 'Software Engineering':
+        return squareSVG
+      default:
+        return null
+    }
+  }
+
+
+
   return (
     <button onClick={showCard} className='h-full w-full'>
-      <div>
+      <div className='relative flex items-center justify-center h-full'>
+        {!showDescription && renderIcon()}
         {!showDescription ? (
-          <h1>{category}</h1>
+          <h1 className='absolute text-center bg-white'>{category}</h1>
         ) : (
           selectedCard && <p>{selectedCard.description}</p>
         )}
