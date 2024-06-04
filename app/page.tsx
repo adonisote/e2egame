@@ -3,6 +3,15 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import e2eLogo from '@/public/E2E_Logo.png';
 import FullScreenComponent from '@/app/ui/fullscreen';
+import dice1 from '@/public/images/Dice1.png'
+import dice2 from '@/public/images/Dice2.png'
+import dice3 from '@/public/images/Dice3.png'
+import dice4 from '@/public/images/Dice4.png'
+import dice5 from '@/public/images/Dice5.png'
+import dice6 from '@/public/images/Dice6.png'
+
+
+
 
 interface Card {
   id: number;
@@ -53,8 +62,18 @@ export default function Game() {
         </div>
       </div>
 
-      <div className='landscape:hidden flex items-center justify-center h-full'>
-        <p>Please rotate your phone!</p>
+      <div className='landscape:hidden flex flex-col items-center justify-center h-full'>
+        <p className='font-bold'>Please rotate your phone!</p>
+        <div>
+
+          <Image
+            src={e2eLogo}
+            alt="E2E Logo"
+            style={{ height: 'auto', width: 150 }}
+            priority
+          />
+        </div>
+
       </div>
     </div>
   );
