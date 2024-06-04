@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="en">
       <body className={`${comfortaa.className} antialiased h-screen overflow-hidden`}>
         <div className="relative w-full h-full">
           <Image
