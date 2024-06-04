@@ -1,5 +1,5 @@
 'use client'
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { useEffect, useState } from 'react';
 import e2eLogo from '@/public/E2E_Logo.png';
 import FullScreenComponent from '@/app/ui/fullscreen';
@@ -83,10 +83,20 @@ function Dice() {
   const [diceOne, setDiceOne] = useState(0);
   const [diceTwo, setDiceTwo] = useState(0);
 
+  const diceImages: { [key: number]: StaticImageData } = {
+    1: dice1,
+    2: dice2,
+    3: dice3,
+    4: dice4,
+    5: dice5,
+    6: dice6
+  }
+
   const rollDice = () => {
     let faceOne = Math.floor(Math.random() * 6) + 1;
     console.log(faceOne);
     setDiceOne(faceOne);
+
     let faceTwo = Math.floor(Math.random() * 6) + 1;
     console.log(faceTwo);
     setDiceTwo(faceTwo);
@@ -94,12 +104,53 @@ function Dice() {
 
   return (
     <>
-      <div className='border-2 border-black w-16 h-16 rounded-lg bg-white'>
-        {diceOne !== 0 ? <p className='border-black'>{diceOne}</p> : <p>Placeholder</p>}
-      </div>
-      <div className='border-2 border-black w-16 h-16 rounded-lg my-4 bg-white'>
-        {diceTwo !== 0 ? <p className='border-black'>{diceTwo}</p> : <p>Placeholder</p>}
-      </div>
+      <div className='relative overflow-hidden border-2 border-black w-16 h-16 rounded-lg my-4 bg-white'>
+        {diceOne !== 0 ? (
+          <Image
+            src={diceImages[diceOne]}
+            alt={`Dice with ${diceOne} pips`}
+            placeholder='blur'
+            quality={100}
+            fill={true}
+            style={{ objectFit: "contain" }}
+            sizes='100px'
+          />
+        ) :
+          (<Image
+            src={diceImages[1]}
+            alt={`Dice with ${diceOne} pips`}
+            placeholder='blur'
+            quality={100}
+            fill={true}
+            style={{ objectFit: "contain" }}
+            sizes='100px'
+          />
+          )}
+      </div >
+      <div className='relative overflow-hidden border-2 border-black w-16 h-16 rounded-lg my-4 bg-white'>
+        {diceOne !== 0 ? (
+          <Image
+            src={diceImages[diceTwo]}
+            alt={`Dice with ${diceTwo} pips`}
+            placeholder='blur'
+            quality={100}
+            fill={true}
+            style={{ objectFit: "contain" }}
+            sizes='100px'
+
+          />
+        ) : (<Image
+          src={diceImages[1]}
+          alt={`Dice with ${diceOne} pips`}
+          placeholder='blur'
+          quality={100}
+          fill={true}
+          style={{ objectFit: "contain" }}
+          sizes='100px'
+        />
+        )}
+      </div >
+
       <button className='border-2 border-black w-16 h-16 rounded-lg bg-e2e-yellow' onClick={rollDice}>Roll</button>
     </>
   );
