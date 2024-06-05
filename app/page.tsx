@@ -45,9 +45,7 @@ export default function Game() {
         </div>
 
         <div className='flex w-full'>
-          <div className='flex flex-col items-center justify-center w-1/6'>
-            <Dice />
-          </div>
+
           <div className='flex w-5/6 justify-evenly'>
             <div className='border-8 border-e2e-blue rounded-lg flex-grow w-1/3 bg-white'>
               <CardComponent category='Project Management' />
@@ -58,6 +56,9 @@ export default function Game() {
             <div className='border-8 border-e2e-lila w-1/3 rounded-lg bg-white'>
               <CardComponent category='Architecture' />
             </div>
+          </div>
+          <div className='flex flex-col items-center justify-center w-1/6'>
+            <Dice />
           </div>
         </div>
       </div>
@@ -104,7 +105,7 @@ function Dice() {
 
   return (
     <>
-      <div className='relative overflow-hidden border-2 border-black w-16 h-16 rounded-lg my-4 bg-white'>
+      <div className='relative overflow-hidden border-2 border-black w-16 h-16 rounded-lg bg-white'>
         {diceOne !== 0 ? (
           <Image
             src={diceImages[diceOne]}
