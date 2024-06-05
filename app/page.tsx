@@ -43,7 +43,7 @@ export default function Game() {
               <CardComponent category='Architecture' />
             </div>
           </div>
-          <div className='flex flex-col items-center justify-center w-1/6'>
+          <div className='flex flex-col items-center justify-between w-1/6'>
             <Dice />
           </div>
         </div>
