@@ -16,8 +16,8 @@ export default function Game() {
 
   return (
     <div className='flex items-center justify-center w-full h-full overflow-y-auto'>
-      <div className='portrait:hidden my-4 mx-8 flex flex-col items-center  w-full max-w-2xl'>
-        <div className='flex items-center w-full mb-4 justify-between'>
+      <div className='portrait:hidden my-4 mx-4 flex flex-col items-center  w-full h-full max-w-2xl  lg:max-h-[50%] '>
+        <div className='flex items-center w-full mt-4 justify-between'>
           <div className='flex items-center'>
             <Image
               src={e2eLogo}
@@ -26,11 +26,11 @@ export default function Game() {
               priority
             />
             <h1 className='mx-4 text-xl font-bold'>E2E Solution Architecture Game</h1>
-            {isMobile && <FullScreenComponent />}
           </div>
+          {isMobile && <FullScreenComponent />}
         </div>
 
-        <div className='flex w-full'>
+        <div className='flex w-full h-full my-4'>
 
           <div className='flex w-5/6 justify-evenly'>
             <div className='border-4 border-e2e-blue rounded-lg flex-grow w-1/3 bg-white'>

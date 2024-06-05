@@ -18,8 +18,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${comfortaa.className} antialiased h-screen overflow-hidden`}>
-        <div className="relative w-full h-full">
+      <body className={`${comfortaa.className} antialiased w-screen h-screen overflow-hidden`}>
+        <div className="relative w-screen h-screen">
           <Image
             src={backgoundImg}
             alt="Background with Fade"
