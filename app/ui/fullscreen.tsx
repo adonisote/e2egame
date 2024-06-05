@@ -13,20 +13,20 @@ export default function FullScreenComponent() {
       setIsFullscreen(Boolean(document.fullscreenElement));
     };
 
-    const suggestFS = () => {
-      if (window.innerWidth > window.innerHeight && !document.fullscreenElement) {
-        alert('Please enter fullscreen for a better experience');
-      }
-    };
+    // const suggestFS = () => {
+    //   if (window.innerWidth > window.innerHeight && !document.fullscreenElement) {
+    //     alert('Please enter fullscreen for a better experience');
+    //   }
+    // };
 
     document.addEventListener('fullscreenchange', onFullscreenChange);
-    window.addEventListener('resize', suggestFS);
+    // window.addEventListener('resize', suggestFS);
 
-    suggestFS();
+    // suggestFS();
 
     return () => {
       document.removeEventListener('fullscreenchange', onFullscreenChange);
-      window.removeEventListener('resize', suggestFS);
+      // window.removeEventListener('resize', suggestFS);
     };
   }, []);
 
