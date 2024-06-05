@@ -29,7 +29,7 @@ export default function Game() {
   }, []);
 
   return (
-    <div className='flex items-center justify-center w-full h-full'>
+    <div className='flex items-center justify-center w-full h-full overflow-y-auto'>
       <div className='portrait:hidden my-8 mx-8 flex flex-col items-center  w-full max-w-4xl'>
         <div className='flex items-center w-full mb-4 justify-between'>
           <div className='flex items-center'>
