@@ -41,6 +41,7 @@ export default function CardComponent({ category }: { category: string }) {
     //render icon and category instead of loading. category is passed as prop
     return <div>Loading...</div>;
   }
+  console.log(cards)
 
   const pickCard = () => {
     const randomIndex = Math.floor(Math.random() * cards.length);
@@ -95,15 +96,22 @@ export default function CardComponent({ category }: { category: string }) {
 
 
   return (
-    <button onClick={showCard} className='h-full w-full'>
-      <div className='relative flex items-center justify-center h-full'>
+    <button onClick={showCard} className='w-full h-full  rounded-lg overflow-hidden'>
+      <div className='relative flex flex-col items-center justify-center h-full '>
         {!showDescription && renderIcon()}
-        {!showDescription ? (
-          <h1 className='absolute text-center font-bold'></h1>
-        ) : (
-          selectedCard && <p className='text-black'>{selectedCard.description}</p>
-        )}
-      </div>
-    </button>
+        {
+          !showDescription ? (
+            <h1 className='absolute text-center font-bold'></h1>
+          ) : (
+            selectedCard && (
+              <>
+                <p className='text-black text-xs m-2'>{selectedCard.context}</p>
+                <p className='text-black text-xs m-2'>{selectedCard.action}</p>
+              </>
+            )
+          )
+        }
+      </div >
+    </button >
   );
 }

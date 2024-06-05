@@ -1,6 +1,7 @@
 export interface Card {
   id: number;
   category: string;
-  description: string;
+  context: string;
+  action: string;
   move: number;
 }
