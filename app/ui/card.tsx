@@ -101,7 +101,7 @@ export default function CardComponent({ category }: { category: string }) {
         {!showDescription ? (
           <h1 className='absolute text-center font-bold'></h1>
         ) : (
-          selectedCard && <p>{selectedCard.description}</p>
+          selectedCard && <p className='text-black'>{selectedCard.description}</p>
         )}
       </div>
     </button>
