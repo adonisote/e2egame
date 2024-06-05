@@ -64,7 +64,9 @@ export default function CardComponent({ category }: { category: string }) {
             src={architecture}
             alt={`${category} card deck`}
             quality={100}
+            fill
             sizes='400px'
+            style={{ objectFit: "cover" }}
             priority
           />
         )
@@ -74,6 +76,8 @@ export default function CardComponent({ category }: { category: string }) {
             src={projectManagement}
             alt={`${category} card deck`}
             quality={100}
+            fill
+            style={{ objectFit: "cover" }}
             sizes='400px'
             priority
           />
@@ -84,6 +88,8 @@ export default function CardComponent({ category }: { category: string }) {
             src={softwareEngineering}
             alt={`${category} card deck`}
             quality={100}
+            fill
+            style={{ objectFit: "cover" }}
             sizes='400px'
             priority
           />
@@ -97,17 +103,19 @@ export default function CardComponent({ category }: { category: string }) {
 
   return (
     <button onClick={showCard} className='w-full h-full  rounded-lg overflow-hidden'>
-      <div className='relative flex flex-col items-center justify-center h-full '>
-        {!showDescription && renderIcon()}
+      <div className='relative flex flex-col items-center justify-center h-full overflow-hidden '>
+
         {
           !showDescription ? (
-            <h1 className='absolute text-center font-bold'></h1>
+            <div className='relative overflow-hidden h-full w-full'>
+              {renderIcon()}
+            </div>
           ) : (
             selectedCard && (
-              <>
+              <div className='h-full flex flex-col items-center justify-center'>
                 <p className='text-black text-xs m-2'>{selectedCard.context}</p>
                 <p className='text-black text-xs m-2'>{selectedCard.action}</p>
-              </>
+              </div>
             )
           )
         }
