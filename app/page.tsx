@@ -29,8 +29,8 @@ export default function Game() {
   }, []);
 
   return (
-    <div className='flex flex-col h-screen'>
-      <div className='portrait:hidden my-8 mx-8 flex flex-col items-center w-full max-w-4xl'>
+    <div className='flex items-center justify-center w-full h-full'>
+      <div className='portrait:hidden my-8 mx-8 flex flex-col items-center  w-full max-w-4xl'>
         <div className='flex items-center w-full mb-4 justify-between'>
           <div className='flex items-center'>
             <Image
@@ -39,7 +39,7 @@ export default function Game() {
               style={{ height: 'auto', width: 150 }}
               priority
             />
-            <h1 className='mx-4 text-xl font-bold text-white'>E2E Solution Architecture Game</h1>
+            <h1 className='mx-4 text-xl font-bold'>E2E Solution Architecture Game</h1>
             {isMobile && <FullScreenComponent />}
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function Game() {
       </div>
 
       <div className='landscape:hidden flex flex-col items-center justify-center h-full'>
-        <p className='font-bold'>Please rotate your phone!</p>
+        <p className='font-bold'>Rotate your phone!</p>
         <div>
 
           <Image
@@ -134,6 +134,7 @@ function Dice() {
             fill={true}
             style={{ objectFit: "contain" }}
             sizes='100px'
+            priority
 
           />
         ) : (<Image
@@ -143,6 +144,7 @@ function Dice() {
           fill={true}
           style={{ objectFit: "contain" }}
           sizes='100px'
+          priority
         />
         )}
       </div >
