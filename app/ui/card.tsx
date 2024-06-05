@@ -1,6 +1,12 @@
 'use client'
 import { useEffect, useState } from 'react';
 import { Card } from '@/app/types/card';
+import projectManagement from '@/public/images/ProjectManagement.png'
+import softwareEngineering from '@/public/images/SoftwareEngineerung.png'
+import architecture from '@/public/images/Architecture.png'
+import Image from 'next/image';
+
+
 
 export default function CardComponent({ category }: { category: string }) {
   const [cards, setCards] = useState<Card[]>([]);
@@ -52,11 +58,35 @@ export default function CardComponent({ category }: { category: string }) {
   const renderIcon = () => {
     switch (category) {
       case 'Architecture':
-        return circleSVG
+        return (
+          <Image
+            src={architecture}
+            alt={`${category} card deck`}
+            quality={100}
+            sizes='400px'
+            priority
+          />
+        )
       case 'Project Management':
-        return triangleSVG
+        return (
+          <Image
+            src={projectManagement}
+            alt={`${category} card deck`}
+            quality={100}
+            sizes='400px'
+            priority
+          />
+        )
       case 'Software Engineering':
-        return squareSVG
+        return (
+          <Image
+            src={softwareEngineering}
+            alt={`${category} card deck`}
+            quality={100}
+            sizes='400px'
+            priority
+          />
+        )
       default:
         return null
     }
@@ -69,7 +99,7 @@ export default function CardComponent({ category }: { category: string }) {
       <div className='relative flex items-center justify-center h-full'>
         {!showDescription && renderIcon()}
         {!showDescription ? (
-          <h1 className='absolute text-center bg-white'>{category}</h1>
+          <h1 className='absolute text-center font-bold'></h1>
         ) : (
           selectedCard && <p>{selectedCard.description}</p>
         )}
