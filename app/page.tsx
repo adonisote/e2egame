@@ -1,18 +1,18 @@
-'use client'
+// 'use client'
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import e2eLogo from '@/public/E2E_Logo.png';
-import FullScreenComponent from '@/app/ui/fullscreen';
+// import FullScreenComponent from '@/app/ui/fullscreen';
 import CardComponent from '@/app/ui/card';
 import Dice from '@/app/ui/dice';
 
 export default function Game() {
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    // This will only run on the client-side
-    setIsMobile(window.innerWidth <= 768); // Adjust the breakpoint as needed
-  }, []);
+  // useEffect(() => {
+  //   // This will only run on the client-side
+  //   setIsMobile(window.innerWidth <= 768); // Adjust the breakpoint as needed
+  // }, []);
 
   return (
     <div className='flex items-center justify-center w-full h-full overflow-y-auto'>
@@ -27,7 +27,7 @@ export default function Game() {
             />
             <h1 className='mx-4 text-xl font-bold'>E2E Solution Architecture Game</h1>
           </div>
-          {isMobile && <FullScreenComponent />}
+          {/* {isMobile && <FullScreenComponent />} */}
         </div>
 
         <div className='flex w-full h-full my-4 max-h-80'>
