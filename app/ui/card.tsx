@@ -1,35 +1,21 @@
 'use client'
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Card } from '@/app/types/card';
 import projectManagement from '@/public/images/ProjectManagement.png'
 import softwareEngineering from '@/public/images/SoftwareEngineerung.png'
 import architecture from '@/public/images/Architecture.png'
-import Image from 'next/image';
-
-
+import forwards from '@/public/images/forwards.png'
+import backwards from '@/public/images/backwards.png'
+import jump from '@/public/images/jump.png'
+import archIcon from '@/public/images/arch-icon.png'
+import seIcon from '@/public/images/se-icon.png'
+import pmIcon from '@/public/images/pm-icon.png'
 
 export default function CardComponent({ category }: { category: string }) {
   const [cards, setCards] = useState<Card[]>([]);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
   const [showDescription, setShowDescription] = useState<boolean>(false);
-
-  const triangleSVG = (
-    <svg width="100" height="100" viewBox="0 0 24 24">
-      <path d="M12 2l9 18h-18z" fill="none" stroke="#1F3864" strokeWidth="1.5" />
-    </svg>
-  );
-
-  const squareSVG = (
-    <svg width="100" height="100" viewBox="0 0 24 24">
-      <rect width="18" height="18" x="3" y="3" fill="none" stroke="#385723" strokeWidth="1.5" />
-    </svg>
-  );
-
-  const circleSVG = (
-    <svg width="100" height="100" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="9" fill="none" stroke="#7030A0" strokeWidth="1.5" />
-    </svg>
-  );
 
   useEffect(() => {
     fetch('/data.json')
@@ -56,7 +42,55 @@ export default function CardComponent({ category }: { category: string }) {
     setShowDescription(prevShow => !prevShow);
   };
 
-  const renderIcon = () => {
+  const renderActionIcon = () => {
+    if (!selectedCard) {
+      return null
+    }
+
+    if (selectedCard?.move < 0) {
+      return (
+        <Image
+          src={backwards}
+          alt={`Backwards card background`}
+          quality={100}
+          fill
+          style={{ objectFit: "contain" }}
+          sizes='400px'
+          priority
+        />
+      )
+    } else if (selectedCard?.move > 0) {
+      return (
+        <Image
+          src={forwards}
+          alt={`Fordwards card background`}
+          quality={100}
+          fill
+          style={{ objectFit: "contain" }}
+          sizes='400px'
+          priority
+        />
+
+      )
+
+    } else {
+      return (
+        <Image
+          src={jump}
+          alt={`Jump card background`}
+          quality={100}
+          fill
+          style={{ objectFit: "contain" }}
+          sizes='400px'
+          priority
+        />
+
+      )
+
+    }
+  }
+
+  const renderCardDeck = () => {
     switch (category) {
       case 'Architecture':
         return (
@@ -99,6 +133,52 @@ export default function CardComponent({ category }: { category: string }) {
     }
   }
 
+  // const renderIcon = () => {
+  //   switch (category) {
+  //     case 'Architecture':
+  //       return (
+  //         <div className="absolute top-2 left-1/2 transform -translate-x-1/2">
+  //           <Image
+  //             src={archIcon}
+  //             alt={`${category} icon`}
+  //             quality={100}
+  //             width={50}
+  //             height={50}
+  //             priority
+  //           />
+  //         </div>
+  //       );
+  //     case 'Project Management':
+  //       return (
+  //         <div className="absolute top-2 left-1/2 transform -translate-x-1/2">
+  //           <Image
+  //             src={pmIcon}
+  //             alt={`${category} icon`}
+  //             quality={100}
+  //             width={50}
+  //             height={50}
+  //             priority
+  //           />
+  //         </div>
+  //       );
+  //     case 'Software Engineering':
+  //       return (
+  //         <div className="absolute top-2 left-1/2 transform -translate-x-1/2">
+  //           <Image
+  //             src={seIcon}
+  //             alt={`${category} icon`}
+  //             quality={100}
+  //             width={50}
+  //             height={50}
+  //             priority
+  //           />
+  //         </div>
+  //       );
+  //     default:
+  //       return null;
+  //   }
+  // };
+
 
 
   return (
@@ -108,13 +188,15 @@ export default function CardComponent({ category }: { category: string }) {
         {
           !showDescription ? (
             <div className='relative overflow-hidden h-full w-full'>
-              {renderIcon()}
+              {renderCardDeck()}
             </div>
           ) : (
             selectedCard && (
               <div className='h-full flex flex-col items-center justify-center'>
-                <p className='text-black text-xs m-2'>{selectedCard.context}</p>
-                <p className='text-black text-xs m-2'>{selectedCard.action}</p>
+                {/* {renderIcon()} */}
+                <p className='text-black text-xs m-2 z-20'>{selectedCard.context}</p>
+                <p className='text-black text-xs m-2 z-20'>{selectedCard.action}</p>
+                {renderActionIcon()}
               </div>
             )
           )
